@@ -6,8 +6,9 @@ jobs:
     runs-on: ubuntu-22.04
     permissions:
       id-token: write
-      actions: read
+      actions: write
       contents: write
+      metadata: write
       security-events: write
     steps:
       - name: Checkout source code
