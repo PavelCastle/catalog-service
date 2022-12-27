@@ -24,13 +24,13 @@ jobs:
         with:
           path: "${{ github.workspace }}"
           fail-build: false
-          severity-cut0ff: high
+          severity-cutoff: high
           acs-report-enable: true
-#      - name: Upload vulnerability report
-#        uses: github/codeql-action/upload-sarif@v2
-#        if: success() || failure()
-#        with:
-#          sarif_file: ${{ steps.scan.outputs.sarif }}
+      - name: Upload vulnerability report
+        uses: github/codeql-action/upload-sarif@v2
+        if: success() || failure()
+        with:
+          sarif_file: ${{ steps.scan.outputs.sarif }}
       - name: Build, unit tests and integration tests
         run: |
           chmod +x gradlew
