@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-22.04
     permissions:
       id-token: write
+      actions: read
       contents: write
       security-events: write
     steps:
