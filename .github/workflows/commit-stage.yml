@@ -9,7 +9,7 @@ jobs:
       security-events: write
     steps:
       - name: Checkout source code
-        uses: actions/checkou@v3
+        uses: actions/checkout@v3
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
@@ -33,4 +33,3 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew build
-          
