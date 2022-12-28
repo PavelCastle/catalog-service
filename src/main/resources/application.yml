@@ -6,3 +6,26 @@ server:
     threads:
       max: 50
       min-spare: 5
+polar:
+  greeting: Welcome to the local book catalog
+spring:
+  application:
+    name: catalog-service
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      uri: http://localhost:8888
+      request-read-timeout: 5000
+      request-connect-timeout: 5000
+      fail-fast: false
+      retry:
+        max-interval: 2000
+        max-attempts: 6
+        initial-interval: 1000
+        multiplier: 1.1
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
