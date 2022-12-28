@@ -24,6 +24,16 @@ spring:
         max-attempts: 6
         initial-interval: 1000
         multiplier: 1.1
+  datasource:
+    url: jdbc:postgresql://localhost:5432/polardb_catalog
+    username: user
+    password: password
+    hikari:
+      connection-timeout: 2000
+      maximum-pool-size: 5
+  sql:
+    init:
+      mode: always
 management:
   endpoints:
     web:
