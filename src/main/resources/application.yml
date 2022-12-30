@@ -6,9 +6,12 @@ server:
     threads:
       max: 50
       min-spare: 5
+  shutdown: graceful
 polar:
   greeting: Welcome to the local book catalog
 spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 15s
   application:
     name: catalog-service
   config:
