@@ -21,6 +21,7 @@ repositories {
 ext {
     set('springCloudVersion', "2022.0.0")
     set('testcontainersVersion', "1.17.3")
+    set('testKeycloakVersion', "2.3.0")
 }
 
 dependencies {
@@ -29,6 +30,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
     implementation 'org.flywaydb:flyway-core'
 
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
@@ -44,6 +46,10 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
     testImplementation 'org.testcontainers:postgresql'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.testcontainers:junit-jupiter'
+    testImplementation "com.github.dasniko:testcontainers-keycloak:${testKeycloakVersion}"
+
 }
 
 dependencyManagement {
@@ -62,12 +68,12 @@ bootRun {
     systemProperty 'spring.profiles.active', 'testdata'
 }
 
-bootBuildImage{
+bootBuildImage {
     imageName = "${project.name}"
-    environment = ["BP_JVM_VERSION" : "17.*"]
+    environment = ["BP_JVM_VERSION": "17.*"]
 
-    docker{
-        publishRegistry{
+    docker {
+        publishRegistry {
             username = project.findProperty("registryUsername")
             password = project.findProperty("registryToken")
             url = project.findProperty("registryUrl")

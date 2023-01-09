@@ -10,6 +10,11 @@ server:
 polar:
   greeting: Welcome to the local book catalog
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/PolarBookshop
   lifecycle:
     timeout-per-shutdown-phase: 15s
   application:
@@ -39,3 +44,7 @@ management:
     web:
       exposure:
         include: refresh
+
+#logging:
+#  level:
+#    org.springframework.security: debug
