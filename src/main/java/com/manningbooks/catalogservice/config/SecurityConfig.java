@@ -33,6 +33,7 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/actuator/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/", "/books/**").permitAll()
                         .anyRequest().hasRole("employee")
                 )
