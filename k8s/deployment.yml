@@ -37,3 +37,15 @@ spec:
               value: http://polar-keycloak/realms/PolarBookshop
             - name: DOCKER_DEFAULT_PLATFORM
               value: linux/amd64
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 9001
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            readinessProbe:
+              httpGet:
+                path: /actuator/health/readiness
+                port: 9001
+              initialDelaySeconds: 5
+              periodSeconds: 15
