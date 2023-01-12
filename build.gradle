@@ -84,3 +84,7 @@ bootBuildImage {
         }
     }
 }
+
+springBoot {
+    buildInfo()
+}
