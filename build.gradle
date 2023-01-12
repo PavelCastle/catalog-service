@@ -22,6 +22,8 @@ ext {
     set('springCloudVersion', "2022.0.0")
     set('testcontainersVersion', "1.17.3")
     set('testKeycloakVersion', "2.3.0")
+//    set('otelVersion', "1.20.2")
+    set('otelVersion', "1.17.0")
 }
 
 dependencies {
@@ -38,6 +40,7 @@ dependencies {
 
     runtimeOnly 'org.postgresql:postgresql'
     runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+    runtimeOnly "io.opentelemetry.javaagent:opentelemetry-javaagent:${otelVersion}"
 
     compileOnly 'org.projectlombok:lombok'
 
